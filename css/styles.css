@@ -77,7 +77,25 @@ img {
   color: #2e2f42;
   padding: 24px 0;
   display: block;
+  position: relative;
+  transition: color 250ms ic-bezier(0.4, 0, 0.2, 1);
 }
+
+.nav-link.active {
+  color: #404bbf;
+}
+
+.nav-link.active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  position: absolute;
+  background-color: #404bbf;
+  bottom: 0;
+}
+
 .nav-link:hover,
 .nav-link:focus {
   color: #404bbf;
@@ -94,6 +112,7 @@ img {
   color: #434455;
   padding: 24px 0;
   display: block;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address-list {
@@ -112,9 +131,19 @@ img {
   background-color: #2e2f42;
   padding-top: 188px;
   padding-bottom: 188px;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/people-office.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.section-one h1 {
+.section-one .title {
   margin: auto;
   margin-bottom: 48px;
   max-width: 496px;
@@ -143,6 +172,7 @@ img {
   letter-spacing: 0.04em;
   color: #ffffff;
   cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:hover,
 .button:focus {
@@ -156,10 +186,25 @@ img {
 .value-section .value-list {
   display: flex;
   gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.values-icon {
+  display: flex;
+  background-color: #f4f4fd;
+  height: 112px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid #8e8f99;
+  margin-bottom: 8px;
 }
 
 .value-list-item {
   width: calc((100% - 72px) / 4);
+  min-width: 240px;
 }
 
 .visually-hidden {
@@ -240,6 +285,40 @@ img {
   padding: 32px 0;
 }
 
+.social-item {
+  width: 40px;
+  height: 40px;
+}
+
+.social-list {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.social-link {
+  display: flex;
+  background-color: #4d5ae5;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-link:hover {
+  background-color: #404bbf;
+}
+
+.social-icon {
+  fill: #ffffff;
+  height: 20px;
+  width: 20px;
+}
+
 .portfolio {
   padding: 120px 0;
 }
@@ -263,7 +342,31 @@ img {
 
 .portfolio-item {
   width: calc((100% - 48px) / 3);
+}
+
+.block-overlay {
   overflow: hidden;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #4d5ae5;
+  color: #f4f4fd;
+  padding-top: 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 164px;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item:hover .overlay {
+  transform: translateY(0);
 }
 
 .portfolio-list-title {
@@ -300,16 +403,21 @@ img {
   padding: 100px 0;
 }
 
+.footer-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.footer-info {
+  max-width: 264px;
+  margin-right: 120px;
+}
+
 .footer-text {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #f4f4fd;
   max-width: 264px;
-}
-
-.container .logo-footer {
-  display: inline-block;
-  margin-bottom: 16px;
 }
 
 .logo-footer {
@@ -320,6 +428,8 @@ img {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
   color: #4d5ae5;
+  display: inline-block;
+  margin-bottom: 16px;
 }
 
 .span-footer {
@@ -330,4 +440,49 @@ img {
   text-transform: uppercase;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
+}
+
+.social-media-list {
+  display: flex;
+  gap: 16px;
+}
+
+.social-media-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.footer-social-link {
+  background-color: #4d5ae5;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-social-link:hover {
+  background-color: #31d0aa;
+}
+
+.social-icon-footer {
+  width: 24px;
+  height: 24px;
+  fill: #f4f4fd;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icon-footer:hover {
+  fill: #fff;
+}
+
+.container-social-media {
+  display: inline-block;
+  margin-bottom: 16px;
 }
